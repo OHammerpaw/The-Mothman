@@ -3,6 +3,9 @@
 
 ![the mothman!](https://user-images.githubusercontent.com/112446901/191030635-d923f72b-28ba-41d2-bc2b-2c55aa2953b7.png)
 
+Search for proof of The Mothman in the dark woods. Find all 4 clues before The Mothman finds you to win the game.
+
+
 ![2](https://user-images.githubusercontent.com/112446901/190940311-0e4025c1-eb51-4359-8c74-2a2ec8fb7851.png)
 
 ![3](https://user-images.githubusercontent.com/112446901/190940334-e2e0b819-416b-4b2c-8f10-54e362afa8d6.png)
