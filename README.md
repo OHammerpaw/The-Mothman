@@ -37,3 +37,11 @@ mothmanAttack- detects when mothman and player's cursor cross paths, displays Mo
 - mothman will begin at random location and change position throughout game (looking for player)
 - all elements are hidden in individual divs that are revealed on hover
 - "flashlight" will be a semi opaque custom cursor that is being manipulated by player
+
+
+Schedule:
+- Monday: final planning and psuedo code. Work on layout, base HTML, sprites
+- Tuesday: work on Mothman movement, clue generation, score table
+- Wednesday: finish up above, work on player elements flashlight/ reveal functionality
+- Thursday: finish/polish whatever didn't get done earlier in the week
+- Friday: final tweaks and touches
