@@ -9,54 +9,62 @@
 //is taken by the Mothman
 
 // grab elements to use them here
-const game = document.getElementById('canvas')
-// const polaroid = document.getElementById('polaroid')
 
 // establishing game as 2d
-const ctx = game.getContext('2d')
 
-const makePolaroid = () => {
-    const polaroid = new Image();
-    polaroid.src = 'images/polaroid.png'
-    polaroid.addEventListener('load', (e) => {
-    ctx.drawImage(polaroid, 0, 0, 32, 32, 600, 40, 32, 32);
-});
-} 
+const game = document.getElementById('canvas'),
+ctx = game.getContext('2d');
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight
+
+makePolaroid();
+
+function makePolaroid()
+{
+  polaroid = new Image();
+  polaroid.src = 'images/polaroid.png';
+  polaroid.onload = function(){
+    ctx.drawImage(polaroid, 0, 0, 30, 30, 600, 45, 40, 40);
+  }
+}
+
+makeFeather();
+
+function makeFeather()
+{
+  feather = new Image();
+  feather.src = 'images/feather copy.png';
+  feather.onload = function(){
+    ctx.drawImage(feather, 0, 0, 30, 30, 15, 300, 40, 40);
+  }
+}
+
+makeTracks();
+
+function makeTracks()
+{
+  tracks = new Image();
+  tracks.src = 'images/Mothman Track-1.png.png';
+  tracks.onload = function(){
+    ctx.drawImage(tracks, 0, 0, 30, 30, 500, 600, 40, 40);
+  }
+}
+
+makeBlood();
+
+function makeBlood()
+{
+  blood = new Image();
+  blood.src = 'images/blood stain.png';
+  blood.onload = function(){
+    ctx.drawImage(blood, 0, 0, 30, 30, 350, 370, 40, 40);
+  }
+}
 
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
-// const image = new Image(60, 45); 
-// image.onload = drawImageActualSize; 
-// image.src = '';
 
-// const featherimg = new Image();
-// featherimg.src = 'https://imgur.com/iA6eynf'
-
-
-
-// const tracksimg = new Image();
-// tracksimg.src = 'https://imgur.com/wfp5h8W'
-
-// const bloodimg = new Image();
-// bloodimg.src = 'https://imgur.com/A6w6XSR'
-
-
-//create a class for all of the clue objects
-class Clue {
-    constructor(x, y, image, width, height, undetected) {
-        this.x = x,
-        this.y = y,
-        this.image = image;
-        this.width = width,
-        this.height = height,
-        this.undetected = undetected,
-        this.render = () => {
-            ctx.fillStyle = this.image
-            ctx.fillRect(this.x, this.y, this.width, this.height)
-        }
-    }
-}
 
 // create a class for Mothman
 class Mothman {
@@ -72,7 +80,6 @@ class Mothman {
             ctx.fillRect(this.x, this.y, this.width, this.height)
         }
     }
-
 }
 
 // randomly generate Mothman's location on the board
@@ -84,12 +91,10 @@ const randomGenMothY = (max) => {
     return Math.floor(Math.random() * max)
 }
 
-
-
-const feather = new Clue(15, 300, 'tan', 10, 10, true)
-const photo = new Clue(600, 40, 'tan', 10, 10, true)
-const tracks = new Clue(500, 170, 'tan', 10, 10, true)
-const blood = new Clue(350, 300, 'tan', 10, 10, true)
+// const feather = new Clue(15, 300, 'tan', 20, 20, true)
+// const photo = new Clue(600, 40, (polaroid), 20, 20, true)
+// const tracks = new Clue(500, 170, 'tan', 20, 20, true)
+// const blood = new Clue(350, 300, 'tan', 20, 20, true)
 const mothman = new Mothman(randomGenMothX(game.width), randomGenMothY(game.height), 'pink', 75, 100)
 
 
@@ -98,7 +103,7 @@ const gameloop = () => {
 
     if(feather.undetected) {
         feather.render()
-    } if(photo.undetected) {
+     if(photo.undetected) {
         photo.render()
     } if(tracks.undetected) {
         tracks.render()
@@ -115,8 +120,4 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
-
-
-
-
-
+}
