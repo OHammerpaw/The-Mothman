@@ -8,6 +8,7 @@ canvas {
     height: 100%;
     /* border: red solid 6px; */
     position: relative;
+   
 }
 
 #container {
@@ -15,6 +16,9 @@ canvas {
     height: 800px;
     /* border: green solid 5px; */
     justify-content: center;
+    position: absolute;
+    text-align: center;
+    margin-left: 200px;
 }
 
 #top-left {
