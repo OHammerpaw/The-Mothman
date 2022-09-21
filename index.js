@@ -15,6 +15,8 @@ ctx = game.getContext('2d');
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight
 
+
+//objects to make it simpler to call for each images coordinates in event listener
 const polaroidCoord = {
     dHeight: 40,
     dWidth: 40,
@@ -103,9 +105,6 @@ function makePolaroid()
         polaroidCoord.dHeight
     );
   }
-//     addEventListener('mousedown', (event) => {
-//     alert('clue clicked')
-//   })
 }
 
 makeFeather();
@@ -159,6 +158,7 @@ function makeBlood()
   }
 }
 
+// get coordinates of area clicked
 const printMousePos = (game, event) => {
     const rect = game.getBoundingClientRect()
     const x = event.clientX - rect.left
@@ -166,6 +166,7 @@ const printMousePos = (game, event) => {
     return { x: x, y: y }
 }
 
+// eventListener for clues
 game.addEventListener('mousedown', function(e) {
     const coordinate = printMousePos(game,e);
     console.log(coordinate) 

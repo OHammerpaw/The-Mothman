@@ -21,6 +21,44 @@ canvas {
     margin-left: 200px;
 }
 
+
 #top-left {
     color: limegreen;
+}
+
+#clue-box {
+    border: yellow solid 5px;
+    height: 300px;
+    width: 60px;
+    text-align: center;
+    margin-left: 100px;
+    
+}
+
+h4 {
+    color:greenyellow
+}
+
+#feather-box {
+    border: blue solid 5px;
+    height: 50px;
+    width: 50px;
+}
+
+#polaroid-box {
+    border: purple solid 5px;
+    height: 50px;
+    width: 50px;
+}
+
+#blood-box {
+    border: red solid 5px;
+    height: 50px;
+    width: 50px;
+}
+
+#track-box {
+    border: pink solid 5px;
+    height: 50px;
+    width: 50px;
 }
