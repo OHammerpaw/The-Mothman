@@ -16,50 +16,58 @@ const game = document.getElementById('canvas'),
 ctx = game.getContext('2d');
 // getting true height and width of canvas
 ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight
+ctx.canvas.height = window.innerHeight;
 
-//objects to make it simpler to call for each images coordinates in event listener
 
-// class Clue {
-//     constructor(dHeight, dWidth, positionX, positionY, undetected) {
-//         this.dHeight = dheight,
-//         this.dwidth = dwidth,
-//         this.positionX = positionX,
-//         this.positionY = positionY,
-//         this.undetected = undetected,
-//         this.render = () => {
-//             ctx.fillStyle = this.image
-//             ctx.fillRect(this.dHeight, this.dWidth, this.positionX, this.positionY)
-//         }
-//     }
-// }
+game.addEventListener('mousemove', function(e) {
+    x = e.offsetX;
+    y = e.offsetY;
+    radius = 150;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'black'
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
+
+    ctx.beginPath();
+    radialGradient = ctx.createRadialGradient(x, y, 1, x, y, radius);
+    radialGradient.addColorStop(0, 'rgba(255,255,255,1)');
+    radialGradient.addColorStop(1, 'rgba(0,0,0,0)');
+  
+    ctx.globalCompositeOperation = "destination-out";
+  
+    ctx.fillStyle = radialGradient;
+    ctx.arc(x, y, radius, 0, Math.PI*2, false);
+    ctx.fill();
+    ctx.closePath();
+
+})
 
 const polaroidCoord = {
-    dHeight: 40,
+    dHeight: 45,
     dWidth: 40,
-    positionX: 600,
-    positionY: 45  
+    positionX: 647,
+    positionY: 220  
 }
 
 const featherCoord = {
     dHeight: 40,
     dWidth: 40,
-    positionX: 15,
-    positionY: 300  
+    positionX: 170,
+    positionY: 436  
 }
 
 const tracksCoord = {
     dHeight: 40,
     dWidth: 40,
-    positionX: 500,
-    positionY: 600  
+    positionX: 348,
+    positionY: 685  
 }
 
 const bloodCoord = {
     dHeight: 40,
     dWidth: 40,
-    positionX: 350,
-    positionY: 370  
+    positionX: 670,
+    positionY: 585 
 }
 
 const polaroidArea = {
