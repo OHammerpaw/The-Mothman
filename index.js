@@ -250,27 +250,19 @@ const randomGenMothY = (max) => {
 const mothman = new Mothman(randomGenMothX(game.width), randomGenMothY(game.height), 'pink', 75, 100)
 
 
-//game functionality
-// const gameloop = () => {
-//     ctx.clearRect(0, 0, game.width, game.height)
-// // rendering images onto canvas
-//     if(feather.undetected) {
-//         feather.render()
-//      if(photo.undetected) {
-//         photo.render()
-//     } if(tracks.undetected) {
-//         tracks.render()
-//     } if(blood.undetected) {
-//         blood.render()
-//     } 
-//     mothman.render()
-// }
 
-// const gameInterval = setInterval(gameloop, 60)
+const gameloop = () => {
+
+}
+
+const gameInterval = setInterval(gameloop, 60)
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     gameInterval
-// })
+document.addEventListener('DOMContentLoaded', function () {
+    gameInterval
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
+    ctx.fillStyle = 'black'
+})
 
-// }
+
