@@ -1,22 +1,39 @@
 
 // include properties to aid movement (smooth and in random directions)
 
-//add eventlisteners fo click on clue objects
-
 //add event Listener for mouse movement when mothman is on revealed
 
 //create gameloop to ensure game stops when player obtains all four clues or 
 //is taken by the Mothman
 
 // grabbing elements from HTML
+const featherBox = document.getElementById('feather-box')
+const bloodBox = document.getElementById('blood-box')
+const trackBox = document.getElementById('track-box')
+const polaroidBox = document.getElementById('polaroid-box')
+
 const game = document.getElementById('canvas'),
 ctx = game.getContext('2d');
 // getting true height and width of canvas
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight
 
-
 //objects to make it simpler to call for each images coordinates in event listener
+
+// class Clue {
+//     constructor(dHeight, dWidth, positionX, positionY, undetected) {
+//         this.dHeight = dheight,
+//         this.dwidth = dwidth,
+//         this.positionX = positionX,
+//         this.positionY = positionY,
+//         this.undetected = undetected,
+//         this.render = () => {
+//             ctx.fillStyle = this.image
+//             ctx.fillRect(this.dHeight, this.dWidth, this.positionX, this.positionY)
+//         }
+//     }
+// }
+
 const polaroidCoord = {
     dHeight: 40,
     dWidth: 40,
@@ -166,6 +183,7 @@ const printMousePos = (game, event) => {
     return { x: x, y: y }
 }
 
+
 // eventListener for clues
 game.addEventListener('mousedown', function(e) {
     const coordinate = printMousePos(game,e);
@@ -173,16 +191,21 @@ game.addEventListener('mousedown', function(e) {
 
     if((polaroidArea.x.start <= coordinate.x && coordinate.x <= polaroidArea.x.end) 
     && (polaroidArea.y.start <= coordinate.y && coordinate.y <= polaroidArea.y.end)) {
-        console.log('photo area clicked')
+        const foundPic = document.getElementById('moth-polaroid');
+        foundPic.style.visibility = 'visible';
     } else if ((featherArea.x.start <= coordinate.x && coordinate.x <= featherArea.x.end)
     && (featherArea.y.start <= coordinate.y && coordinate.y <= featherArea.y.end)) {
-        console.log('feather area clicked')
+        const foundFeather = document.getElementById('moth-feather');
+        foundFeather.style.visibility = 'visible';
     } else if ((tracksArea.x.start <= coordinate.x && coordinate.x <= tracksArea.x.end) 
     && (tracksArea.y.start <= coordinate.y && coordinate.y <= tracksArea.y.end)) {
-        console.log('tracks area clicked')
+        const foundTracks = document.getElementById('moth-tracks');
+        foundTracks.style.visibility = 'visible';
     } else if ((bloodArea.x.start <= coordinate.x && coordinate.x <= bloodArea.x.end) 
     && (bloodArea.y.start <= coordinate.y && coordinate.y <= bloodArea.y.end)) {
-        console.log('blood area clicked')
+        const foundBlood = document.getElementById('moth-blood');
+        foundBlood.style.visibility = 'visible';
+
     }
 })
 
@@ -220,26 +243,26 @@ const mothman = new Mothman(randomGenMothX(game.width), randomGenMothY(game.heig
 
 
 //game functionality
-const gameloop = () => {
-    ctx.clearRect(0, 0, game.width, game.height)
-// rendering images onto canvas
-    if(feather.undetected) {
-        feather.render()
-     if(photo.undetected) {
-        photo.render()
-    } if(tracks.undetected) {
-        tracks.render()
-    } if(blood.undetected) {
-        blood.render()
-    } 
-    mothman.render()
-}
+// const gameloop = () => {
+//     ctx.clearRect(0, 0, game.width, game.height)
+// // rendering images onto canvas
+//     if(feather.undetected) {
+//         feather.render()
+//      if(photo.undetected) {
+//         photo.render()
+//     } if(tracks.undetected) {
+//         tracks.render()
+//     } if(blood.undetected) {
+//         blood.render()
+//     } 
+//     mothman.render()
+// }
 
-const gameInterval = setInterval(gameloop, 60)
+// const gameInterval = setInterval(gameloop, 60)
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    gameInterval
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//     gameInterval
+// })
 
-}
+// }

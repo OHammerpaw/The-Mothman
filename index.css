@@ -8,6 +8,7 @@ canvas {
     height: 100%;
     /* border: red solid 6px; */
     position: relative;
+    overflow: hidden;
    
 }
 
@@ -27,9 +28,8 @@ canvas {
 }
 
 #clue-box {
-    border: yellow solid 5px;
     height: 300px;
-    width: 60px;
+    width: 50px;
     text-align: center;
     margin-left: 100px;
     
@@ -40,25 +40,55 @@ h4 {
 }
 
 #feather-box {
-    border: blue solid 5px;
+    border: black solid 1px;
     height: 50px;
     width: 50px;
+    background-color: tan;
 }
 
 #polaroid-box {
-    border: purple solid 5px;
+    border: black solid 1px;
     height: 50px;
     width: 50px;
+    background-color: tan;
 }
 
 #blood-box {
-    border: red solid 5px;
+    border: black solid 1px;
     height: 50px;
     width: 50px;
+    background-color: tan;
 }
 
 #track-box {
-    border: pink solid 5px;
+    border: black solid 1px;
     height: 50px;
     width: 50px;
+    background-color: tan;
+
 }
+
+#moth-polaroid {
+    visibility: hidden;
+    height: 45px;
+    width: 45px;
+}
+
+#moth-feather {
+    visibility: hidden;
+    height: 45px;
+    width: 45px;
+}
+
+#moth-blood {
+    visibility: hidden;
+    height: 45px;
+    width: 45px;
+}
+
+#moth-tracks {
+    visibility: hidden;
+    height: 45px;
+    width: 45px;
+}
+
