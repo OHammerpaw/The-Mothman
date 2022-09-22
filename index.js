@@ -277,19 +277,30 @@ const gameloop = () => {
     && foundFeather.style.visibility == 'visible'
     && foundTracks.style.visibility == 'visible' 
     && foundBlood.style.visibility == 'visible') {
-        document.getElementById('message').innerText="You survived!"
-    }
+        document.getElementById('message').innerText="You made it out alive with all the clues";
+        document.getElementById('button').style.visibility = "visible";
+    } document.getElementById('button').addEventListener('click', stopGameLoop)
 }
 
 const gameInterval = setInterval(gameloop, 60)
 
+const stopGameLoop = () => {
+    clearInterval(gameInterval)
+    foundPic.style.visibility = 'hidden'
+    foundFeather.style.visibility = 'hidden'
+    foundTracks.style.visibility = 'hidden'
+    foundBlood.style.visibility = 'hidden'
+    document.getElementById('message').innerText=''
+    document.getElementById('button').style.visibility = "hidden"
+
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     gameInterval
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = 'black'
-    mothman.render()
+    // mothman.render()
 })
 
 
