@@ -1,6 +1,9 @@
 body {
     background-color: black;
-    margin: 0
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    color: limegreen;
+    text-align: center;
 }
 
 canvas {

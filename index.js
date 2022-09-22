@@ -11,6 +11,10 @@ const featherBox = document.getElementById('feather-box')
 const bloodBox = document.getElementById('blood-box')
 const trackBox = document.getElementById('track-box')
 const polaroidBox = document.getElementById('polaroid-box')
+const foundFeather = document.getElementById('moth-feather')
+const foundPic = document.getElementById('moth-polaroid')
+const foundTracks = document.getElementById('moth-tracks')
+const foundBlood = document.getElementById('moth-blood')
 
 const game = document.getElementById('canvas'),
 ctx = game.getContext('2d');
@@ -18,7 +22,7 @@ ctx = game.getContext('2d');
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 
-
+// flashlight effect
 game.addEventListener('mousemove', function(e) {
     x = e.offsetX;
     y = e.offsetY;
@@ -199,19 +203,19 @@ game.addEventListener('mousedown', function(e) {
 
     if((polaroidArea.x.start <= coordinate.x && coordinate.x <= polaroidArea.x.end) 
     && (polaroidArea.y.start <= coordinate.y && coordinate.y <= polaroidArea.y.end)) {
-        const foundPic = document.getElementById('moth-polaroid');
+        // const foundPic = document.getElementById('moth-polaroid');
         foundPic.style.visibility = 'visible';
     } else if ((featherArea.x.start <= coordinate.x && coordinate.x <= featherArea.x.end)
     && (featherArea.y.start <= coordinate.y && coordinate.y <= featherArea.y.end)) {
-        const foundFeather = document.getElementById('moth-feather');
+        // const foundFeather = document.getElementById('moth-feather');
         foundFeather.style.visibility = 'visible';
     } else if ((tracksArea.x.start <= coordinate.x && coordinate.x <= tracksArea.x.end) 
     && (tracksArea.y.start <= coordinate.y && coordinate.y <= tracksArea.y.end)) {
-        const foundTracks = document.getElementById('moth-tracks');
+        // const foundTracks = document.getElementById('moth-tracks');
         foundTracks.style.visibility = 'visible';
     } else if ((bloodArea.x.start <= coordinate.x && coordinate.x <= bloodArea.x.end) 
     && (bloodArea.y.start <= coordinate.y && coordinate.y <= bloodArea.y.end)) {
-        const foundBlood = document.getElementById('moth-blood');
+        // const foundBlood = document.getElementById('moth-blood');
         foundBlood.style.visibility = 'visible';
 
     }
@@ -252,7 +256,12 @@ const mothman = new Mothman(randomGenMothX(game.width), randomGenMothY(game.heig
 
 
 const gameloop = () => {
+    if(foundPic.style.visibility == 'visible'
+    && foundFeather.style.visibility == 'visible'
+    && foundTracks.style.visibility == 'visible' 
+    && foundBlood.style.visibility == 'visible') {
 
+    }
 }
 
 const gameInterval = setInterval(gameloop, 60)
