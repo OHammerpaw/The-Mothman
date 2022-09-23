@@ -7,7 +7,7 @@ const foundFeather = document.getElementById('moth-feather')
 const foundPic = document.getElementById('moth-polaroid')
 const foundTracks = document.getElementById('moth-tracks')
 const foundBlood = document.getElementById('moth-blood')
-
+const gameSpace = document.getElementById('container')
 // const mothmanTwo = document.getElementById('take2')
 
 // const darkness = document.getElementById('flashlight')
@@ -226,21 +226,21 @@ game.addEventListener('mousedown', function(e) {
 
 // ADDING AUDIO ELEMENT ON 17 SECOND INTERVAL
 
- const playAudio =(url) => {
-        mothmanDanger = document.createElement('audio');
-        mothmanDanger.src = 'Sound/horror-whoosh-99988.mp3';
-        mothmanDanger.style.display = "none"; 
-        mothmanDanger.play();
-        mothmanDanger.autoplay = false
-        document.getElementById('message').innerText="DON'T MOVE..."
-        mothmanDanger.onended = function(){
-        mothmanDanger.remove(); 
-        document.getElementById('message').innerText=''
-        };
-        document.body.appendChild(mothmanDanger);
-      }
+//  const playAudio =(url) => {
+//         mothmanDanger = document.createElement('audio');
+//         mothmanDanger.src = 'Sound/horror-whoosh-99988.mp3';
+//         mothmanDanger.style.display = "none"; 
+//         mothmanDanger.play();
+//         mothmanDanger.autoplay = false
+//         document.getElementById('message').innerText="DON'T MOVE..."
+//         mothmanDanger.onended = function(){
+//         mothmanDanger.remove(); 
+//         document.getElementById('message').innerText=''
+//         };
+//         document.body.appendChild(mothmanDanger);
+//       }
      
-    const mothInterval = setInterval(playAudio, 17000)
+//     const mothInterval = setInterval(playAudio, 17000)
 
 
 // GETS TRUE CANVAS SIZE 
@@ -255,12 +255,38 @@ const gameloop = () => {
     && foundFeather.style.visibility == 'visible'
     && foundTracks.style.visibility == 'visible' 
     && foundBlood.style.visibility == 'visible') {
-        document.getElementById('message').innerText="You made it out alive with all the clues";
+        document.getElementById('message').innerText="You made it out alive with enough evidence";
         document.getElementById('button').style.visibility = "visible";
     } document.getElementById('button').addEventListener('click', stopGameLoop)
 }
 
 const gameInterval = setInterval(gameloop, 60)
+
+
+////ADDING GAME LOSS CONDITION IF MOUSE IS MOVED WHILE SOUND IS PLAYING////
+// const caughtCondition = () => {
+//     if(document.getElementById('message').innerText == "DON'T MOVE...") {
+//         gameSpace.addEventListener('click', (e)
+//         ('message').innerText="You've been caught by the Mothman. Game Over.")
+        
+//     }
+// }
+const gameTimer = (duration, display) => {
+    let timer = duration, seconds;
+    setInterval(function (){
+        seconds = parseInt(timer % 60, 10);
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+
+
 
 //HOLDS STOPGAME, RE-HIDES CLUES AND TRY AGAIN BUTTON
 const stopGameLoop = () => {
@@ -271,6 +297,7 @@ const stopGameLoop = () => {
     foundBlood.style.visibility = 'hidden'
     document.getElementById('message').innerText=''
     document.getElementById('button').style.visibility = "hidden"
+    
 
 }
 
@@ -280,6 +307,9 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = 'black'
+    let thirtySeconds = 60 / 2,
+    display = document.getElementById('timer');
+    gameTimer(thirtySeconds, display);
 })
 
 

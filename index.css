@@ -111,6 +111,16 @@ h4 {
     text-align: center;
 }
 
+#timer {
+    height: 40px;
+    width: 100px;
+    margin-left: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;;
+    font-size: xx-large;
+    text-align: center;
+}
+
 #button-box {
     
     height: 60px;
