@@ -224,23 +224,23 @@ game.addEventListener('mousedown', function(e) {
     }
 })
 
-// ADDING AUDIO ELEMENT ON 17 SECOND INTERVAL
+// ADDING AUDIO ELEMENT //////ON 17 SECOND INTERVAL///////
 
-//  const playAudio =(url) => {
-//         mothmanDanger = document.createElement('audio');
-//         mothmanDanger.src = 'Sound/horror-whoosh-99988.mp3';
-//         mothmanDanger.style.display = "none"; 
-//         mothmanDanger.play();
-//         mothmanDanger.autoplay = false
-//         document.getElementById('message').innerText="DON'T MOVE..."
-//         mothmanDanger.onended = function(){
-//         mothmanDanger.remove(); 
-//         document.getElementById('message').innerText=''
-//         };
-//         document.body.appendChild(mothmanDanger);
-//       }
+ const playAudio =(url) => {
+        mothmanDanger = document.createElement('audio');
+        mothmanDanger.src = 'Sound/horror-whoosh-99988.mp3';
+        mothmanDanger.style.display = "none"; 
+        mothmanDanger.play();
+        mothmanDanger.autoplay = false
+        // document.getElementById('message').innerText="DON'T MOVE..."
+        mothmanDanger.onended = function(){
+        mothmanDanger.remove(); 
+        document.getElementById('message').innerText=''
+        };
+        document.body.appendChild(mothmanDanger);
+      }
      
-//     const mothInterval = setInterval(playAudio, 17000)
+    // const mothInterval = setInterval(playAudio, 17000)
 
 
 // GETS TRUE CANVAS SIZE 
@@ -271,24 +271,8 @@ const gameInterval = setInterval(gameloop, 60)
         
 //     }
 // }
-const gameTimer = (duration, display) => {
-    let timer = duration, seconds;
-    setInterval(function (){
-        seconds = parseInt(timer % 60, 10);
-        seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
-
-
-
-
-//HOLDS STOPGAME, RE-HIDES CLUES AND TRY AGAIN BUTTON
+// HOLDS STOPGAME, RE-HIDES CLUES AND TRY AGAIN BUTTON
 const stopGameLoop = () => {
     clearInterval(gameInterval)
     foundPic.style.visibility = 'hidden'
@@ -297,9 +281,14 @@ const stopGameLoop = () => {
     foundBlood.style.visibility = 'hidden'
     document.getElementById('message').innerText=''
     document.getElementById('button').style.visibility = "hidden"
-    
-
+     setTimeout(() => {
+        document.getElementById('button').style.visibility = "visible";
+        document.getElementById('message').innerText="Mothman found you first.";
+        playAudio()
+    }, 30000);
+   
 }
+
 
 // STARTS GAME AS BLACK ON LOAD
 document.addEventListener('DOMContentLoaded', function () {
@@ -307,9 +296,12 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = 'black'
-    let thirtySeconds = 60 / 2,
-    display = document.getElementById('timer');
-    gameTimer(thirtySeconds, display);
+    setTimeout(() => {
+        document.getElementById('button').style.visibility = "visible";
+        document.getElementById('message').innerText="Mothman found you first.";
+        playAudio()
+    }, 30000);
+    
 })
 
 
