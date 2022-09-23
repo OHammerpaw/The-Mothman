@@ -1,11 +1,3 @@
-
-// include properties to aid movement (smooth and in random directions)
-
-//add event Listener for mouse movement when mothman is on revealed
-
-//create gameloop to ensure game stops when player obtains all four clues or 
-//is taken by the Mothman
-
 // grabbing elements from HTML
 const featherBox = document.getElementById('feather-box')
 const bloodBox = document.getElementById('blood-box')
@@ -52,61 +44,7 @@ game.addEventListener('mousemove', function(e) {
 
 })
 
-// ATTEMPTED TO PUT A SECOND CANVAS OVER FIRST CANVAS TO HOLD FLASHLIGHT EFFECT
-
-// darkness.addEventListener('mousemove', function(e) {
-//     x = e.offsetX;
-//     y = e.offsetY;
-//     radius = 150;
-//     darkCtx.globalCompositeOperation = 'source-over';
-//     darkCtx.fillStyle = 'black'
-//     darkCtx.clearRect(0, 0, darkCtx.canvas.width, darkCtx.canvas.height);
-//     darkCtx.fillRect(0,0, darkCtx.canvas.width, darkCtx.canvas.height);
-
-//     darkCtx.beginPath();
-//     radialGradient = darkCtx.createRadialGradient(x, y, 1, x, y, radius);
-//     radialGradient.addColorStop(0, 'rgba(255,255,255,1)');
-//     radialGradient.addColorStop(1, 'rgba(0,0,0,0)');
-  
-//     darkCtx.globalCompositeOperation = "destination-out";
-  
-//     darkCtx.fillStyle = radialGradient;
-//     darkCtx.arc(x, y, radius, 0, Math.PI*2, false);
-//     darkCtx.fill();
-//     darkCtx.closePath();
-
-// })
-
-// ATTTEMPT TO CREATE FLASHLIGHT EFFECT WITH CSS
-
-// let mouseX = 0;
-// let mouseY = 0;
-// let flashlight = document.getElementById('flashlight');
-
-// const getMousePosition = (e) => {
-//     mouseX = [0].pageX;
-//     mouseY = [0].pageY;
-
-//     flashlight.style.setProperty("--Xpos", mouseX + "px");
-//     flashlight.style.setProperty("--Ypos", mouseY + "px");
-// }
-
-// document.addEventListener("mousemove", getMousePosition);
-
-// function trackMouse(event) {
-//     document.documentElement.style.setProperty(
-//       '--cursorXPos',
-//       `${event.clientX}px`
-//     )
-//     document.documentElement.style.setProperty(
-//       '--cursorYPos',
-//       `${event.clientY}px`
-//     )
-//   }
-  
-//   document.addEventListener('mousemove', trackMouse)
-
-// OBFECTS TO HOLD COORDINATES OF CLUES FOR EASY REFERENCE
+// OBJECTS TO HOLD COORDINATES OF CLUES FOR EASY REFERENCE
 
 const polaroidCoord = {
     dHeight: 45,
@@ -286,56 +224,29 @@ game.addEventListener('mousedown', function(e) {
     }
 })
 
-// ATTEMPT TO ADD SOUND (CURRENTLY ABANDONED)
+// ADDING AUDIO ELEMENT ON 17 SECOND INTERVAL
 
-// class sound (src) {
-//     this.sound = document.createElement("audio");
-//     this.sound.src = src;
-//     this.sound.setAttribute("preload", "auto");
-//     this.sound.setAttribute("controls", "none");
-//     this.sound.style.display = "none";
-//     document.body.appendChild(this.sound);
-//     this.play = function(){
-//         this.sound.play();
-//     }
-//     this.stop = function() {
-//         this.sound.pause();
-//     }
-// }
+ const playAudio =(url) => {
+        mothmanDanger = document.createElement('audio');
+        mothmanDanger.src = 'Sound/horror-whoosh-99988.mp3';
+        mothmanDanger.style.display = "none"; 
+        mothmanDanger.play();
+        mothmanDanger.autoplay = false
+        document.getElementById('message').innerText="DON'T MOVE..."
+        mothmanDanger.onended = function(){
+        mothmanDanger.remove(); 
+        document.getElementById('message').innerText=''
+        };
+        document.body.appendChild(mothmanDanger);
+      }
+     
+    const mothInterval = setInterval(playAudio, 17000)
 
 
 // GETS TRUE CANVAS SIZE 
 game.setAttribute('width', getComputedStyle(game)['width'])
 game.setAttribute('height', getComputedStyle(game)['height'])
 
-/////////ATTEMPT TO PUT 'MOTHMAN' AS A SQUARE ON CANVAS LAYER/////
-
-// create a class for Mothman
-// class Mothman {
-//     constructor(x, y, color, width, height) {
-//         this.x = x,
-//         this.y = y;
-//         this.color = color;
-//         this.width = width;
-//         this.height = height,
-//         this.speed = 10,
-//         this.render = () => {
-//             ctx.fillStyle = this.color
-//             ctx.fillRect(this.x, this.y, this.width, this.height)
-//         }
-//     }
-// }
-
-// randomly generate Mothman's location on the board
-// const randomGenMothX = (max) => {
-//     return Math.floor(Math.random() * max)
-// }
-
-// const randomGenMothY = (max) => {
-//     return Math.floor(Math.random() * max)
-// }
-
-// const mothman = new Mothman(randomGenMothX(game.width), randomGenMothY(game.height), 'pink', 75, 100)
 
 // GAMELOOP THAT TRACKS WIN CONDITION AND CONTROLS TRY AGAIN BUTTON
 
@@ -369,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = 'black'
-    // mothman.render()
 })
 
 
