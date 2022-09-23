@@ -120,6 +120,18 @@ const bloodArea = {
     }
 }
 
+//lose condition function
+
+ const caughtByMothman = () => {
+    console.log('timeout ended')
+    document.getElementById('button').style.visibility = "visible";
+    document.getElementById('message').innerText="Mothman found you first.";
+    playAudio()
+ }
+
+let mothmanTimeout
+
+
 //using drawImage to get images to play nice with canvas
 makePolaroid();
 
@@ -257,10 +269,11 @@ const gameloop = () => {
     && foundBlood.style.visibility == 'visible') {
         document.getElementById('message').innerText="You made it out alive with enough evidence";
         document.getElementById('button').style.visibility = "visible";
+        clearTimeout(mothmanTimeout)
     } document.getElementById('button').addEventListener('click', stopGameLoop)
 }
 
-const gameInterval = setInterval(gameloop, 60)
+let gameInterval = setInterval(gameloop, 60)
 
 
 ////ADDING GAME LOSS CONDITION IF MOUSE IS MOVED WHILE SOUND IS PLAYING////
@@ -275,17 +288,16 @@ const gameInterval = setInterval(gameloop, 60)
 // HOLDS STOPGAME, RE-HIDES CLUES AND TRY AGAIN BUTTON
 const stopGameLoop = () => {
     clearInterval(gameInterval)
+    clearTimeout(mothmanTimeout)
+    console.log('in stopGameLoop')
     foundPic.style.visibility = 'hidden'
     foundFeather.style.visibility = 'hidden'
     foundTracks.style.visibility = 'hidden'
     foundBlood.style.visibility = 'hidden'
     document.getElementById('message').innerText=''
     document.getElementById('button').style.visibility = "hidden"
-     setTimeout(() => {
-        document.getElementById('button').style.visibility = "visible";
-        document.getElementById('message').innerText="Mothman found you first.";
-        playAudio()
-    }, 30000);
+    gameInterval = setInterval(gameloop, 60)
+    mothmanTimeout = setTimeout(caughtByMothman, 30000)
    
 }
 
@@ -296,12 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
     ctx.fillStyle = 'black'
-    setTimeout(() => {
-        document.getElementById('button').style.visibility = "visible";
-        document.getElementById('message').innerText="Mothman found you first.";
-        playAudio()
-    }, 30000);
-    
+    mothmanTimeout = setTimeout(caughtByMothman, 30000)
 })
 
 
