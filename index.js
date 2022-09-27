@@ -75,7 +75,7 @@ const bloodCoord = {
 }
 
 //CALCULATES AREA OF ENTIRE CLUE SO PLAYER DOES NOT HAVE TO CLICK THE EXACT CENTER TO COLLECT IT
-
+//Great idea -- you obviously really thought this through
 const polaroidArea = {
     x: {
         start: polaroidCoord.positionX,
@@ -261,7 +261,7 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 
 
 // GAMELOOP THAT TRACKS WIN CONDITION AND CONTROLS TRY AGAIN BUTTON
-
+//Your comments are great
 const gameloop = () => {
     if(foundPic.style.visibility == 'visible'
     && foundFeather.style.visibility == 'visible'
