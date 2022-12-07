@@ -47,5 +47,5 @@ mothmanAttack- detects when mothman and player's cursor cross paths, displays Mo
 - Players can still 'win' game after they are caught by The Mothman- this needs to be fixed
 - Need to update wireframes
 
-
-
+## View Live Site and Play
+https://ohammerpaw.github.io/The-Mothman/
