@@ -1,10 +1,11 @@
 
 # The Mothman!
 
+## Intro
+This is a cryptid themed clue collecting game. Players use their flashlight to look for clues in the dark woods. If they find all the clues before the hidden timer runs out, they win. If they fail to find all of the clues, they are caught by the Mothman and lose.
+
+## Wireframes
 ![the mothman!](https://user-images.githubusercontent.com/112446901/191030635-d923f72b-28ba-41d2-bc2b-2c55aa2953b7.png)
-
-Search for proof of The Mothman in the dark woods. Find all 4 clues before The Mothman finds you to win the game.
-
 
 ![2](https://user-images.githubusercontent.com/112446901/190940311-0e4025c1-eb51-4359-8c74-2a2ec8fb7851.png)
 
@@ -14,6 +15,7 @@ Search for proof of The Mothman in the dark woods. Find all 4 clues before The M
 
 ![5](https://user-images.githubusercontent.com/112446901/191009709-8371be7c-2b8a-4e24-896f-fde936fec185.png)
 
+## Code Info
 
 Clue: {
   x: (x location on the canvas)
@@ -37,15 +39,13 @@ function - gameloop: holds the entire logic that runs the game
 eventListener (onclick) - adds clues to clue bar
 mothmanAttack- detects when mothman and player's cursor cross paths, displays Mothman on contact and ends game
 
-- clues will be placed at random locations on game load
-- mothman will begin at random location and change position throughout game (looking for player)
-- all elements are hidden in individual divs that are revealed on hover
-- "flashlight" will be a semi opaque custom cursor that is being manipulated by player
+## Growing Pains (Fixes for V2)
+
+- Currently clues are stationary and do not appear in random location with each new game- this needs to be changed
+- Would like to add a feature where if any movement is detected while Mothman sound cue is playing, the game is lost
+- mothmanAttack function where users mouse movement is tracked not currently functional
+- Players can still 'win' game after they are caught by The Mothman- this needs to be fixed
+- Need to update wireframes
 
 
-Schedule:
-- Monday: final planning and psuedo code. Work on layout, base HTML, sprites
-- Tuesday: work on Mothman movement, clue generation, score table
-- Wednesday: finish up above, work on player elements flashlight/ reveal functionality
-- Thursday: finish/polish whatever didn't get done earlier in the week
-- Friday: final tweaks and touches
+
